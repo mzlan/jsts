@@ -26,9 +26,9 @@
       var map = new ol.Map({
          target: 'map',
          controls: ol.control.defaults({
-						attribution: false,
-						rotate: false,
-						zoom: false
+			attribution: false,
+			rotate: false,
+			zoom: false
                        }),
         view: new ol.View({
 		  projection:proj,
@@ -37,41 +37,41 @@
           zoom: 4
         })
       });
-	  let parser = new jsts.io.OL3Parser();
+      let parser = new jsts.io.OL3Parser();
       parser.inject(ol.geom.Point, ol.geom.LineString, ol.geom.LinearRing, ol.geom.Polygon, ol.geom.MultiPoint, ol.geom.MultiLineString, ol.geom.MultiPolygon);
-	  var wkt1="POINT ("+"113.36733018908569 23.125607531477872"+")";
-	  var wkt2="POINT ("+"113.36734010607498 23.125616410488103"+")";
-	  var format= new ol.format.WKT();
-	  //ÉèÖÃ·ûºÅÑùÊ½
-	  var style = {
-					point:new ol.style.Style({							  
-									   image: new ol.style.Circle({
-									   radius: 2 * 2,
-									   fill: new ol.style.Fill({
-										 color: 'rgba(0, 0, 255, 0.8)'
-									   }),
-									   stroke: new ol.style.Stroke({
-										 color: 'rgba(0, 0, 0, 0.8)',
-										 width: 1 / 2
-									   })
-									 }),
-									 zIndex: Infinity
-					}),
+      var wkt1="POINT ("+"113.36733018908569 23.125607531477872"+")";
+      var wkt2="POINT ("+"113.36734010607498 23.125616410488103"+")";
+      var format= new ol.format.WKT();
+      //è®¾ç½®ç¬¦å·æ ·å¼
+      var style = {
+	       point:new ol.style.Style({							  
+					   image: new ol.style.Circle({
+					   radius: 2 * 2,
+					   fill: new ol.style.Fill({
+						 color: 'rgba(0, 0, 255, 0.8)'
+					   }),
+					   stroke: new ol.style.Stroke({
+						 color: 'rgba(0, 0, 0, 0.8)',
+						 width: 1 / 2
+					   })
+					 }),
+					 zIndex: Infinity
+		 }),
 					
-					polygon:new ol.style.Style({
-                                        fill: new ol.style.Fill({ //Ê¸Á¿Í¼²ãÌî³äÑÕÉ«£¬ÒÔ¼°Í¸Ã÷¶È
+		polygon:new ol.style.Style({
+                                        fill: new ol.style.Fill({ //çŸ¢é‡å›¾å±‚å¡«å……é¢œè‰²ï¼Œä»¥åŠé€æ˜åº¦
                                             color: 'rgba(200, 100, 250, 0.8)'
                                         }),
-                                        stroke: new ol.style.Stroke({ //±ß½çÑùÊ½
+                                        stroke: new ol.style.Stroke({ //è¾¹ç•Œæ ·å¼
                                             color: '#234120',
                                             width: 1
                                         }),
                                 }),
-					intersect:new ol.style.Style({
-                                        fill: new ol.style.Fill({ //Ê¸Á¿Í¼²ãÌî³äÑÕÉ«£¬ÒÔ¼°Í¸Ã÷¶È
+		intersect:new ol.style.Style({
+                                        fill: new ol.style.Fill({ //çŸ¢é‡å›¾å±‚å¡«å……é¢œè‰²ï¼Œä»¥åŠé€æ˜åº¦
                                             color: 'rgba(255, 255, 0, 0.8)'
                                         }),
-                                        stroke: new ol.style.Stroke({ //±ß½çÑùÊ½
+                                        stroke: new ol.style.Stroke({ //è¾¹ç•Œæ ·å¼
                                             color: '#234120',
                                             width: 1
                                         }),
@@ -96,11 +96,11 @@
 	  var jstsgeo1=parser.read(geo1);
 	  var jstsgeo2=parser.read(geo2);
 	  
-	  //»º³åÇø
+	  //ç¼“å†²åŒº
 	  var buffer1=jstsgeo1.buffer(0.00001);
 	  var buffer2=jstsgeo2.buffer(0.00001);
 	  
-	  //Ïà½»
+	  //ç›¸äº¤
 	  //var intersects=buffer1.intersects(buffer2);
 	  var intersects=buffer1.intersection(buffer2);
 	  //console.log(intersects);
