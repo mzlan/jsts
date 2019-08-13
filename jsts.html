@@ -39,23 +39,23 @@
       });
       let parser = new jsts.io.OL3Parser();
       parser.inject(ol.geom.Point, ol.geom.LineString, ol.geom.LinearRing, ol.geom.Polygon, ol.geom.MultiPoint, ol.geom.MultiLineString, ol.geom.MultiPolygon);
-      var wkt1="POINT ("+"113.36733018908569 23.125607531477872"+")";
-      var wkt2="POINT ("+"113.36734010607498 23.125616410488103"+")";
+      var wkt1="POINT (113.36733018908569 23.125607531477872)";
+      var wkt2="POINT (113.36734010607498 23.125616410488103)";
       var format= new ol.format.WKT();
       //设置符号样式
       var style = {
 	       point:new ol.style.Style({							  
-					   image: new ol.style.Circle({
-					   radius: 2 * 2,
-					   fill: new ol.style.Fill({
-						 color: 'rgba(0, 0, 255, 0.8)'
-					   }),
-					   stroke: new ol.style.Stroke({
-						 color: 'rgba(0, 0, 0, 0.8)',
-						 width: 1 / 2
-					   })
-					 }),
-					 zIndex: Infinity
+		     	image: new ol.style.Circle({
+		   	radius: 2 * 2,
+		   	fill: new ol.style.Fill({
+			 	color: 'rgba(0, 0, 255, 0.8)'
+		   	}),
+		   	stroke: new ol.style.Stroke({
+			 	color: 'rgba(0, 0, 0, 0.8)',
+			 	width: 1 / 2
+		   		})
+		 	}),
+		 	zIndex: Infinity
 		 }),
 					
 		polygon:new ol.style.Style({
@@ -105,8 +105,8 @@
 	  var intersects=buffer1.intersection(buffer2);
 	  //console.log(intersects);
 	  var fea=new ol.Feature();
-	  fea.setGeometry(parser.write(intersects.buffer(0.00001)))
-	   fea.setGeometry(parser.write(intersects))
+	  //fea.setGeometry(parser.write(intersects.buffer(0.00001)))
+	  fea.setGeometry(parser.write(intersects))
 	  fea.setStyle(style.intersect);
 	  
 	  console.log(fea);
